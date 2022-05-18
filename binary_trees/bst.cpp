@@ -38,7 +38,7 @@ public:
         }
     }
 
-    TreeNode* insertRecursive(TreeNode* r, TreeNode* new_node)
+    TreeNode* insert(TreeNode* r, TreeNode* new_node)
     {
         if (r == NULL)
         {
@@ -48,15 +48,14 @@ public:
 
         if (new_node->value < r->value)
         {
-            r->left = insertRecursive(r->left, new_node);
+            r->left = insert(r->left, new_node);
         }
         else if (new_node->value > r->value)
         {
-            r->right = insertRecursive(r->right, new_node);
+            r->right = insert(r->right, new_node);
         }
         else
         {
-            cout << "No duplicate values allowed!" << endl;
             return r;
         }
         return r;
@@ -105,7 +104,7 @@ int main() {
             TreeNode* new_node = new TreeNode();
             val = rand() % 500;
             new_node->value = val;
-            obj.root = obj.insertRecursive(obj.root, new_node);
+            obj.root = obj.insert(obj.root, new_node);
         }
         auto end = std::chrono::steady_clock::now();
         auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
