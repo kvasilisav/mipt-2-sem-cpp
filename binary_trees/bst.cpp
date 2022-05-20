@@ -95,14 +95,13 @@ public:
 };
 
 int main() {
-    for (int n = 0; n < 10; n++) {
-        cout << n << endl;
+    for (int n = 10000; n < 100000; n = n + 1000) {
         auto start = std::chrono::steady_clock::now();
         BST obj;
         int val;
         for (int k = 0; k < n; k++) {
             TreeNode* new_node = new TreeNode();
-            val = rand() % 500;
+            val = rand();
             new_node->value = val;
             obj.root = obj.insert(obj.root, new_node);
         }
